@@ -15,7 +15,7 @@ let EXTRAS = "url_m"
 let DATA_FORMAT = "json"
 let NO_JSON_CALLBACK = "1"
 
-class ViewController: UIViewController {
+class ViewController: UIViewController, UITextFieldDelegate {
 
     @IBOutlet weak var imageView: UIImageView!
     @IBOutlet weak var textSearchButton: UIButton!
@@ -32,6 +32,7 @@ class ViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         // Do any additional setup after loading the view, typically from a nib.
+        phraseText.delegate = self
         
         if let path = NSBundle.mainBundle().pathForResource("Key", ofType: "plist") {
             keys = NSDictionary(contentsOfFile: path)
@@ -177,5 +178,14 @@ class ViewController: UIViewController {
         
         return (!urlVars.isEmpty ? "?" : "") + urlVars.joinWithSeparator("&")
     }
+    
+    func textFieldShouldReturn(textField: UITextField) -> Bool {
+        textField.resignFirstResponder()
+        return true
+    }
+    
+    override func touchesBegan(touches: Set<UITouch>, withEvent event: UIEvent?) {
+        phraseText.resignFirstResponder()
+        self.view.endEditing(true)
+    }
 }
-
