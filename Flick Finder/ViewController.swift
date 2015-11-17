@@ -29,11 +29,6 @@ class ViewController: UIViewController {
     var API_KEY: String?
     var TEXT: String?
     
-    enum InputError: ErrorType {
-        case InputMissing
-        case AgeIncorrect
-    }
-    
     override func viewDidLoad() {
         super.viewDidLoad()
         // Do any additional setup after loading the view, typically from a nib.
@@ -51,7 +46,6 @@ class ViewController: UIViewController {
         super.didReceiveMemoryWarning()
         // Dispose of any resources that can be recreated.
     }
-
 
     @IBAction func searchByPhraseButton(sender: AnyObject) {
         if let usertext = phraseText {
@@ -107,7 +101,6 @@ class ViewController: UIViewController {
             do {
                 parsedResult = try NSJSONSerialization.JSONObjectWithData(data, options: .AllowFragments)
             } catch {
-                parsedResult = nil
                 print("Could not parse the data as JSON: '\(data)'")
                 return
             }
@@ -126,8 +119,9 @@ class ViewController: UIViewController {
             }
             
             /* GUARD: How many photos does the API return */
-            guard parsedResult["total"] != nil else {
+            guard let total = photosDictionary["pages"]as? Int where total != 0 else {
                 dispatch_async(dispatch_get_main_queue(), {
+                    self.imageView.image = nil
                     self.defaultTextLabel.text = "Cannot find photos with \(self.TEXT!)"
                 })
                 return
