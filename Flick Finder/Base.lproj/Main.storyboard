@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8" standalone="no"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="9060" systemVersion="15C40a" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" initialViewController="BYZ-38-t0r">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="9060" systemVersion="15C47a" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" initialViewController="BYZ-38-t0r">
     <dependencies>
         <deployment identifier="iOS"/>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="9051"/>
@@ -29,13 +29,13 @@
                                 <rect key="frame" x="20" y="431" width="240" height="30"/>
                                 <animations/>
                                 <fontDescription key="fontDescription" type="system" pointSize="14"/>
-                                <textInputTraits key="textInputTraits"/>
+                                <textInputTraits key="textInputTraits" keyboardType="numbersAndPunctuation"/>
                             </textField>
                             <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="tGw-m1-Jqo">
                                 <rect key="frame" x="275" y="431" width="240" height="30"/>
                                 <animations/>
                                 <fontDescription key="fontDescription" type="system" pointSize="14"/>
-                                <textInputTraits key="textInputTraits"/>
+                                <textInputTraits key="textInputTraits" keyboardType="numbersAndPunctuation"/>
                             </textField>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="bVj-hO-voX">
                                 <rect key="frame" x="534" y="383" width="46" height="30"/>
@@ -60,15 +60,15 @@
                                 <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
                                 <nil key="highlightedColor"/>
                             </label>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Latitude" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="GEN-Aa-bg0">
-                                <rect key="frame" x="109" y="469" width="63" height="21"/>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" misplaced="YES" text="Longitude" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="GEN-Aa-bg0">
+                                <rect key="frame" x="95" y="469" width="77" height="21"/>
                                 <animations/>
                                 <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                 <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
                                 <nil key="highlightedColor"/>
                             </label>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Longitude" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="LiZ-R7-IcS">
-                                <rect key="frame" x="357" y="469" width="77" height="21"/>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" misplaced="YES" text="Latitude" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="LiZ-R7-IcS">
+                                <rect key="frame" x="371" y="469" width="63" height="21"/>
                                 <animations/>
                                 <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                 <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
@@ -81,9 +81,13 @@
                                 <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
                                 <nil key="highlightedColor"/>
                             </label>
-                            <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="hW9-Kg-2Go">
+                            <imageView userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="hW9-Kg-2Go">
                                 <rect key="frame" x="20" y="81" width="560" height="270"/>
                                 <animations/>
+                                <gestureRecognizers/>
+                                <connections>
+                                    <outletCollection property="gestureRecognizers" destination="REv-cb-HTT" appends="YES" id="qQL-DS-c7l"/>
+                                </connections>
                             </imageView>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Search photos on Flickr" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="qZs-Rx-AWi">
                                 <rect key="frame" x="210" y="212" width="181" height="21"/>
@@ -104,6 +108,7 @@
                             <constraint firstItem="hW9-Kg-2Go" firstAttribute="height" secondItem="8bC-Xf-vdC" secondAttribute="height" multiplier="0.45" id="8Rm-8u-g10"/>
                             <constraint firstItem="qZs-Rx-AWi" firstAttribute="centerX" secondItem="hW9-Kg-2Go" secondAttribute="centerX" id="Ea8-GB-FUy"/>
                             <constraint firstAttribute="trailingMargin" secondItem="hW9-Kg-2Go" secondAttribute="trailing" id="G9a-WQ-Okx"/>
+                            <constraint firstItem="hW9-Kg-2Go" firstAttribute="top" secondItem="tll-pK-Nfs" secondAttribute="bottom" constant="20" id="H05-v9-5iw"/>
                             <constraint firstAttribute="leadingMargin" secondItem="WBc-eS-PKd" secondAttribute="leading" id="Kob-y8-dqp"/>
                             <constraint firstItem="GEN-Aa-bg0" firstAttribute="top" secondItem="m8e-uw-kuv" secondAttribute="bottom" constant="8" id="Nc5-t2-DKp"/>
                             <constraint firstItem="wfy-db-euE" firstAttribute="top" secondItem="6fG-tY-X3g" secondAttribute="bottom" constant="20" id="P2H-aO-fq8"/>
@@ -118,7 +123,6 @@
                             <constraint firstAttribute="leadingMargin" secondItem="hW9-Kg-2Go" secondAttribute="leading" id="ibA-3A-pQN"/>
                             <constraint firstItem="LiZ-R7-IcS" firstAttribute="centerX" secondItem="tGw-m1-Jqo" secondAttribute="centerX" id="ie3-PZ-Qg6"/>
                             <constraint firstAttribute="trailingMargin" secondItem="fEf-eL-8lW" secondAttribute="trailing" id="mxA-BQ-Q8O"/>
-                            <constraint firstItem="tll-pK-Nfs" firstAttribute="top" secondItem="y3c-jy-aDJ" secondAttribute="bottom" constant="20" id="nMt-cE-Njp"/>
                             <constraint firstItem="fEf-eL-8lW" firstAttribute="centerY" secondItem="tGw-m1-Jqo" secondAttribute="centerY" id="p4Y-qU-UWi"/>
                             <constraint firstItem="m8e-uw-kuv" firstAttribute="centerY" secondItem="tGw-m1-Jqo" secondAttribute="centerY" id="pHA-bl-Sq3"/>
                             <constraint firstItem="tGw-m1-Jqo" firstAttribute="leading" secondItem="m8e-uw-kuv" secondAttribute="trailing" constant="15" id="qv8-SA-91W"/>
@@ -131,14 +135,19 @@
                         <outlet property="defaultTextLabel" destination="qZs-Rx-AWi" id="pnk-fk-QtB"/>
                         <outlet property="imageTitleLabel" destination="6fG-tY-X3g" id="s9Y-CK-j4b"/>
                         <outlet property="imageView" destination="hW9-Kg-2Go" id="kXz-Qa-OBg"/>
-                        <outlet property="latitudeTextField" destination="m8e-uw-kuv" id="QUT-3F-4YQ"/>
+                        <outlet property="latitudeTextField" destination="tGw-m1-Jqo" id="XSx-gN-bIo"/>
                         <outlet property="locationSearchButton" destination="fEf-eL-8lW" id="Snj-ch-Vm0"/>
-                        <outlet property="longitudeTextField" destination="tGw-m1-Jqo" id="wT3-q8-zWm"/>
+                        <outlet property="longitudeTextField" destination="m8e-uw-kuv" id="CfE-I5-wCv"/>
                         <outlet property="phraseSearchButton" destination="bVj-hO-voX" id="geM-Zm-ihS"/>
                         <outlet property="phraseTextField" destination="WBc-eS-PKd" id="2Cf-xJ-k3h"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="dkx-z0-nzr" sceneMemberID="firstResponder"/>
+                <tapGestureRecognizer id="REv-cb-HTT">
+                    <connections>
+                        <action selector="searchByPhraseButton:" destination="BYZ-38-t0r" id="asz-0l-oP5"/>
+                    </connections>
+                </tapGestureRecognizer>
             </objects>
             <point key="canvasLocation" x="305" y="387"/>
         </scene>
