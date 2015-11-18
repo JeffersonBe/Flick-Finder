@@ -60,14 +60,14 @@
                                 <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
                                 <nil key="highlightedColor"/>
                             </label>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" misplaced="YES" text="Longitude" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="GEN-Aa-bg0">
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Longitude" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="GEN-Aa-bg0">
                                 <rect key="frame" x="95" y="469" width="77" height="21"/>
                                 <animations/>
                                 <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                 <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
                                 <nil key="highlightedColor"/>
                             </label>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" misplaced="YES" text="Latitude" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="LiZ-R7-IcS">
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Latitude" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="LiZ-R7-IcS">
                                 <rect key="frame" x="371" y="469" width="63" height="21"/>
                                 <animations/>
                                 <fontDescription key="fontDescription" type="system" pointSize="17"/>
@@ -121,14 +121,14 @@
                             <constraint firstAttribute="trailingMargin" secondItem="bVj-hO-voX" secondAttribute="trailing" id="fdW-vp-D9U"/>
                             <constraint firstAttribute="trailingMargin" secondItem="6fG-tY-X3g" secondAttribute="trailing" id="iRU-E6-Iih"/>
                             <constraint firstAttribute="leadingMargin" secondItem="hW9-Kg-2Go" secondAttribute="leading" id="ibA-3A-pQN"/>
-                            <constraint firstItem="LiZ-R7-IcS" firstAttribute="centerX" secondItem="tGw-m1-Jqo" secondAttribute="centerX" id="ie3-PZ-Qg6"/>
+                            <constraint firstItem="LiZ-R7-IcS" firstAttribute="centerX" secondItem="tGw-m1-Jqo" secondAttribute="centerX" constant="7.5" id="ie3-PZ-Qg6"/>
                             <constraint firstAttribute="trailingMargin" secondItem="fEf-eL-8lW" secondAttribute="trailing" id="mxA-BQ-Q8O"/>
                             <constraint firstItem="fEf-eL-8lW" firstAttribute="centerY" secondItem="tGw-m1-Jqo" secondAttribute="centerY" id="p4Y-qU-UWi"/>
                             <constraint firstItem="m8e-uw-kuv" firstAttribute="centerY" secondItem="tGw-m1-Jqo" secondAttribute="centerY" id="pHA-bl-Sq3"/>
                             <constraint firstItem="tGw-m1-Jqo" firstAttribute="leading" secondItem="m8e-uw-kuv" secondAttribute="trailing" constant="15" id="qv8-SA-91W"/>
                             <constraint firstItem="fEf-eL-8lW" firstAttribute="leading" secondItem="tGw-m1-Jqo" secondAttribute="trailing" constant="19" id="rv0-3z-vSf"/>
                             <constraint firstItem="6fG-tY-X3g" firstAttribute="top" secondItem="LiZ-R7-IcS" secondAttribute="bottom" constant="69" id="tHD-GE-2WF"/>
-                            <constraint firstItem="GEN-Aa-bg0" firstAttribute="centerX" secondItem="m8e-uw-kuv" secondAttribute="centerX" id="zLc-H1-kmh"/>
+                            <constraint firstItem="GEN-Aa-bg0" firstAttribute="centerX" secondItem="m8e-uw-kuv" secondAttribute="centerX" constant="-6.5" id="zLc-H1-kmh"/>
                         </constraints>
                     </view>
                     <connections>
