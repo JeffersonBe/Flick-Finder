@@ -18,10 +18,12 @@ let NO_JSON_CALLBACK = "1"
 class ViewController: UIViewController, UITextFieldDelegate {
 
     @IBOutlet weak var imageView: UIImageView!
-    @IBOutlet weak var textSearchButton: UIButton!
+    @IBOutlet weak var phraseSearchButton: UIButton!
     @IBOutlet weak var locationSearchButton: UIButton!
     @IBOutlet weak var imageTitleLabel: UILabel!
-    @IBOutlet weak var phraseText: UITextField!
+    @IBOutlet weak var phraseTextField: UITextField!
+    @IBOutlet weak var latitudeTextField: UITextField!
+    @IBOutlet weak var longitudeTextField: UITextField!
     @IBOutlet weak var defaultTextLabel: UILabel!
     
     var keys: NSDictionary?
@@ -32,7 +34,9 @@ class ViewController: UIViewController, UITextFieldDelegate {
     override func viewDidLoad() {
         super.viewDidLoad()
         // Do any additional setup after loading the view, typically from a nib.
-        phraseText.delegate = self
+        phraseTextField.delegate = self
+        latitudeTextField.delegate = self
+        longitudeTextField.delegate = self
         
         if let path = NSBundle.mainBundle().pathForResource("Key", ofType: "plist") {
             keys = NSDictionary(contentsOfFile: path)
@@ -47,10 +51,20 @@ class ViewController: UIViewController, UITextFieldDelegate {
         super.didReceiveMemoryWarning()
         // Dispose of any resources that can be recreated.
     }
+    
+    override func viewWillAppear(animated: Bool) {
+        super.viewWillAppear(animated)
+        subscribeToKeyboardNotifications()
+    }
+    
+    override func viewWillDisappear(animated: Bool) {
+        super.viewWillDisappear(animated)
+        unsubscribeFromKeyboardNotifications()
+    }
 
     @IBAction func searchByPhraseButton(sender: AnyObject) {
-        if let usertext = phraseText {
-            TEXT = usertext.text
+        if let usertext = phraseTextField.text {
+            TEXT = usertext
         }
 
         /* 2 - API method arguments */
@@ -185,7 +199,42 @@ class ViewController: UIViewController, UITextFieldDelegate {
     }
     
     override func touchesBegan(touches: Set<UITouch>, withEvent event: UIEvent?) {
-        phraseText.resignFirstResponder()
         self.view.endEditing(true)
+    }
+    
+    //MARK: KeyboardManagement
+    func keyboardWillShow(notification: NSNotification) {
+        view.frame.origin.y -= getKeyboardHeight(notification)
+    }
+    
+    func keyboardWillHide(notification: NSNotification){
+        view.frame.origin.y += getKeyboardHeight(notification)
+    }
+    
+    func getKeyboardHeight(notification: NSNotification) -> CGFloat {
+        let userInfo = notification.userInfo
+        let keyboardSize = userInfo![UIKeyboardFrameEndUserInfoKey] as! NSValue // of CGRect
+        return keyboardSize.CGRectValue().height
+    }
+    
+    //MARK: Notifications
+    func subscribeToKeyboardNotifications() {
+        NSNotificationCenter.defaultCenter().addObserver(self,
+            selector: "keyboardWillShow:",
+            name: UIKeyboardWillShowNotification,
+            object: nil)
+        NSNotificationCenter.defaultCenter().addObserver(self,
+            selector: "keyboardWillHide:",
+            name: UIKeyboardWillHideNotification,
+            object: nil)
+    }
+    
+    func unsubscribeFromKeyboardNotifications() {
+        NSNotificationCenter.defaultCenter().removeObserver(self,
+            name: UIKeyboardWillShowNotification,
+            object: nil)
+        NSNotificationCenter.defaultCenter().removeObserver(self,
+            name:UIKeyboardWillHideNotification,
+            object: nil)
     }
 }
