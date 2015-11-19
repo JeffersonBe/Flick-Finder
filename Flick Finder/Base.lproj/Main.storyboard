@@ -42,7 +42,7 @@
                                 <animations/>
                                 <state key="normal" title="Button"/>
                                 <connections>
-                                    <action selector="searchByPhraseButton:" destination="BYZ-38-t0r" eventType="touchUpInside" id="bCl-Ef-5Tq"/>
+                                    <action selector="searchByPhrase:" destination="BYZ-38-t0r" eventType="touchUpInside" id="ca9-eW-WVR"/>
                                 </connections>
                             </button>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="fEf-eL-8lW">
@@ -50,7 +50,7 @@
                                 <animations/>
                                 <state key="normal" title="Button"/>
                                 <connections>
-                                    <action selector="searchByLocationButton:" destination="BYZ-38-t0r" eventType="touchUpInside" id="aaG-hl-QnZ"/>
+                                    <action selector="searchByLocation:" destination="BYZ-38-t0r" eventType="touchUpInside" id="1au-yf-Wv8"/>
                                 </connections>
                             </button>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Flick Finder" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="tll-pK-Nfs">

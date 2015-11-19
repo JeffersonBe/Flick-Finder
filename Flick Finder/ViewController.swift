@@ -16,7 +16,7 @@ let DATA_FORMAT = "json"
 let NO_JSON_CALLBACK = "1"
 
 class ViewController: UIViewController, UITextFieldDelegate {
-
+    
     @IBOutlet weak var imageView: UIImageView!
     @IBOutlet weak var phraseSearchButton: UIButton!
     @IBOutlet weak var locationSearchButton: UIButton!
@@ -56,8 +56,8 @@ class ViewController: UIViewController, UITextFieldDelegate {
         super.viewWillDisappear(animated)
         unsubscribeFromKeyboardNotifications()
     }
-
-    @IBAction func searchByPhraseButton(sender: AnyObject) {
+    
+    @IBAction func searchByPhrase(sender: AnyObject) {
         /* 2 - API method arguments */
         methodArguments = [
             "method": METHOD_NAME,
@@ -70,26 +70,36 @@ class ViewController: UIViewController, UITextFieldDelegate {
         searchOnFlickApiWithParameters(methodArguments!)
     }
     
-    @IBAction func searchByLocationButton(sender: AnyObject) {
+    @IBAction func searchByLocation(sender: AnyObject) {
         /* Set boundaries for bbox API min
-            The 4 values represent the bottom-left corner of the box and the top-right corner, minimum_longitude, minimum_latitude, maximum_longitude, maximum_latitude
+        The 4 values represent the bottom-left corner of the box and the top-right corner, minimum_longitude, minimum_latitude, maximum_longitude, maximum_latitude
         */
         
-        let minlongitudeTextField = Int(longitudeTextField.text!)! * -1
-        let minlatitudeTextField =  Int(latitudeTextField.text!)! * -1
-        let maxlongitudeTextField = longitudeTextField.text!
-        let maxlatitudeTextField = latitudeTextField.text!
-        
-        /* 2 - API method arguments */
-        methodArguments = [
-            "method": METHOD_NAME,
-            "api_key": API_KEY!,
-            "bbox": "\(minlongitudeTextField),\(minlatitudeTextField),\(maxlongitudeTextField),\(maxlatitudeTextField)",
-            "extras": EXTRAS,
-            "format": DATA_FORMAT,
-            "nojsoncallback": NO_JSON_CALLBACK
-        ]
-        searchOnFlickApiWithParameters(methodArguments!)
+        if longitudeTextField.text!.isEmpty || latitudeTextField.text!.isEmpty {
+            defaultTextLabel.textColor = UIColor.redColor()
+            defaultTextLabel.text = "Please enter both longitute or latitude"
+        } else {
+            if -190...190 ~= Int(longitudeTextField.text!)! || -50...50 ~= Int(latitudeTextField.text!)! {
+                let minlongitudeTextField = Int(longitudeTextField.text!)! * -1
+                let minlatitudeTextField =  Int(latitudeTextField.text!)! * -1
+                let maxlongitudeTextField = longitudeTextField.text!
+                let maxlatitudeTextField = latitudeTextField.text!
+                
+                /* 2 - API method arguments */
+                methodArguments = [
+                    "method": METHOD_NAME,
+                    "api_key": API_KEY!,
+                    "bbox": "\(minlongitudeTextField),\(minlatitudeTextField),\(maxlongitudeTextField),\(maxlatitudeTextField)",
+                    "extras": EXTRAS,
+                    "format": DATA_FORMAT,
+                    "nojsoncallback": NO_JSON_CALLBACK
+                ]
+                searchOnFlickApiWithParameters(methodArguments!)
+            } else {
+                defaultTextLabel.text = "Please enter value between -190 and 190 for latitude"
+                
+            }
+        }
     }
     
     func searchOnFlickApiWithParameters(parameters: [String : AnyObject]) {
@@ -144,7 +154,7 @@ class ViewController: UIViewController, UITextFieldDelegate {
             }
             
             /* GUARD: Are the "photos" and "photo" keys in our result? */
-            guard let   photosDictionary = parsedResult["photos"] as? NSDictionary,
+            guard let photosDictionary = parsedResult["photos"] as? NSDictionary,
                 photoArray = photosDictionary["photo"] as? [[String: AnyObject]] else {
                     print("Cannot find keys 'photos' and 'photo' in \(parsedResult)")
                     return
