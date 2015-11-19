@@ -98,7 +98,7 @@
                             </label>
                         </subviews>
                         <animations/>
-                        <color key="backgroundColor" white="0.33333333333333331" alpha="1" colorSpace="calibratedWhite"/>
+                        <color key="backgroundColor" white="0.66666666666666663" alpha="1" colorSpace="calibratedWhite"/>
                         <constraints>
                             <constraint firstItem="tGw-m1-Jqo" firstAttribute="width" secondItem="m8e-uw-kuv" secondAttribute="width" id="1dP-JR-DHv"/>
                             <constraint firstItem="WBc-eS-PKd" firstAttribute="top" secondItem="hW9-Kg-2Go" secondAttribute="bottom" constant="32" id="27e-ah-hYp"/>

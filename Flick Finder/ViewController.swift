@@ -58,6 +58,13 @@ class ViewController: UIViewController, UITextFieldDelegate {
     }
     
     @IBAction func searchByPhrase(sender: AnyObject) {
+        
+        guard phraseTextField.text != "" else {
+            defaultTextLabel.textColor = UIColor.redColor()
+            defaultTextLabel.text = "Please enter a phrase"
+            return
+        }
+        
         /* 2 - API method arguments */
         methodArguments = [
             "method": METHOD_NAME,
@@ -75,18 +82,25 @@ class ViewController: UIViewController, UITextFieldDelegate {
         The 4 values represent the bottom-left corner of the box and the top-right corner, minimum_longitude, minimum_latitude, maximum_longitude, maximum_latitude
         */
         
-        if longitudeTextField.text!.isEmpty || latitudeTextField.text!.isEmpty {
+        guard longitudeTextField.text != "" && latitudeTextField.text != "" else {
             defaultTextLabel.textColor = UIColor.redColor()
             defaultTextLabel.text = "Please enter both longitute or latitude"
-        } else {
-            if -190...190 ~= Int(longitudeTextField.text!)! || -50...50 ~= Int(latitudeTextField.text!)! {
-                let minlongitudeTextField = Int(longitudeTextField.text!)! * -1
-                let minlatitudeTextField =  Int(latitudeTextField.text!)! * -1
-                let maxlongitudeTextField = longitudeTextField.text!
-                let maxlatitudeTextField = latitudeTextField.text!
+            return
+        }
+        
+        guard -180...180 ~= Int(longitudeTextField.text!)! || -90...90 ~= Int(latitudeTextField.text!)! else {
+            defaultTextLabel.textColor = UIColor.redColor()
+            defaultTextLabel.text = "Please enter value between -190 and 190 for latitude"
+            return
+        }
+        
+        let minlongitudeTextField = Int(longitudeTextField.text!)! * -1
+        let minlatitudeTextField =  Int(latitudeTextField.text!)! * -1
+        let maxlongitudeTextField = longitudeTextField.text!
+        let maxlatitudeTextField = latitudeTextField.text!
                 
-                /* 2 - API method arguments */
-                methodArguments = [
+        /* 2 - API method arguments */
+        methodArguments = [
                     "method": METHOD_NAME,
                     "api_key": API_KEY!,
                     "bbox": "\(minlongitudeTextField),\(minlatitudeTextField),\(maxlongitudeTextField),\(maxlatitudeTextField)",
@@ -95,11 +109,6 @@ class ViewController: UIViewController, UITextFieldDelegate {
                     "nojsoncallback": NO_JSON_CALLBACK
                 ]
                 searchOnFlickApiWithParameters(methodArguments!)
-            } else {
-                defaultTextLabel.text = "Please enter value between -190 and 190 for latitude"
-                
-            }
-        }
     }
     
     func searchOnFlickApiWithParameters(parameters: [String : AnyObject]) {
